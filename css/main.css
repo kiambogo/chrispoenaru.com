@@ -21,6 +21,10 @@ h6 {
   font-weight: 700;
 }
 
+h3 {
+  margin-top: 0px;
+}
+
 .lead {
   font-size: 18px;
   font-weight: 400;
@@ -79,6 +83,15 @@ h6 {
   .intro-divider {
     width: 100%;
   }
+
+  .resume {
+    text-align: center;
+  }
+}
+
+.subsection {
+  display: inline-block;
+  margin-bottom: 80px;
 }
 
 .network-name {
@@ -89,24 +102,42 @@ h6 {
 }
 
 .content-section-a {
-  padding: 50px 0;
+  padding: 10px 0 40px 0;
   background-color: #f8f8f8;
 }
 
 .content-section-b {
-  padding: 50px 0;
+  padding: 10px 0 40px 0;
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
 }
 
 .section-heading {
-  margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .section-heading-spacer {
-  float: left;
+  float: center;
   width: 200px;
   border-top: 3px solid #e7e7e7;
+  margin-bottom: 40px;
+}
+
+.section-subheading-spacer {
+  float: center;
+  width: 200px;
+  border-top: 3px solid #e7e7e7;
+}
+
+.sheep {
+  height: 500px;
+  margin: auto;
+}
+
+.bigdata {
+  max-width: 420px;
+  margin: auto;
 }
 
 .banner {
@@ -128,13 +159,13 @@ h6 {
 
 .personal-pic {
   height: 400px;
-  margin-top: 80px;
+  margin: auto;
 }
 @media (max-width: 768px) {
-    .personal-pic {
-      margin-top: 20px;
-    }
+  .personal-pic {
+    margin-top: 20px;
   }
+}
 
 .banner-social-buttons {
   float: right;
