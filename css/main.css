@@ -61,6 +61,10 @@ h3 {
   text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 
+.hack-the-north {
+  text-align: center;
+}
+
 @media(max-width:767px) {
   .intro-message {
     padding-bottom: 15%;
@@ -76,10 +80,6 @@ h3 {
     padding: 0;
   }
 
-  ul.intro-social-buttons > li:last-child {
-    margin-bottom: 0;
-  }
-
   .intro-divider {
     width: 100%;
   }
@@ -87,10 +87,18 @@ h3 {
   .resume {
     text-align: center;
   }
+  .hack-the-north {
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .subsection {
   display: inline-block;
+  margin-bottom: 80px;
+}
+.subsection > li:last-child {
+  display: block;
   margin-bottom: 80px;
 }
 
@@ -147,10 +155,6 @@ h3 {
   margin: auto;
 }
 
-.constant-height-text {
-
-  }
-
 .hackimageholder {
   height: 100px;
   text-align: center;
@@ -176,6 +180,12 @@ h3 {
   text-align: center;
 }
 
+.constant-height-text {
+  display: block;
+  height: 250px;
+  width: 100%;
+}
+
 .banner {
   padding: 20px 0;
   color: #f8f8f8;
@@ -197,6 +207,7 @@ h3 {
   height: 400px;
   margin: auto;
 }
+
 @media (max-width: 768px) {
   .personal-pic {
     margin-top: 20px;
@@ -208,6 +219,34 @@ h3 {
 
   ul.banner-social-buttons {
     float: none;
+  }
+  .constant-height-text {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) and (min-width:480px){
+  .constant-height-text {
+    display: block;
+    height: 200px;
+    width: 100%;
+
+  }
+}
+@media (max-width: 992px) and (min-width: 601px) {
+  .constant-height-text {
+    display: block;
+    height: 150px;
+    width: 100%;
+
+  }
+}
+@media (max-width: 1199px) and (min-width: 993px){
+  .constant-height-text {
+    display: block;
+    height: 320px;
+    width: 100%;
+
   }
 }
 
