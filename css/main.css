@@ -180,6 +180,11 @@ h3 {
   text-align: center;
 }
 
+.hackdate {
+  text-align: center;
+  font-size: 16px;
+}
+
 .constant-height-text {
   display: block;
   height: 250px;
