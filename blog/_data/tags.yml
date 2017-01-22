@@ -1,0 +1,26 @@
+# Add an entry, where the key represents a slug.
+# Provide at least a `name` value and optionally `image`, `color` and `description`.
+# Markdown is enabled for `description`, however don't use more than one paragraph (enforced by `>`)
+#
+# Example:
+#
+# ~~~
+# mytag:
+#   name: My Tag
+#   description: >
+#     *My Tag* is an example of how to define a custom tag.
+# ~~~
+
+tech:
+  name: Tech
+  image: /blog/public/img/city.jpg
+  color: '#949667'
+  description: >
+    Things that I've learned when using Scala, Haskell, and Elm.
+
+triathlon:
+  name: Triathlon
+  image: /blog/public/img/tri.jpg
+  color: '#949667'
+  description: >
+    Some tri stuff goes here.

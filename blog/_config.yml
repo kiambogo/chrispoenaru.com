@@ -1,0 +1,107 @@
+# Dependencies
+gems:
+  - jekyll-sitemap
+  - jekyll-paginate
+
+# Permalinks
+permalink:           pretty
+
+# Setup
+url:                 http://chrispoenaru.com/
+
+# Set to '' in case of hosting on GitHub pages,
+# i.e. `http://<username>.github.io`
+baseurl:             /blog
+
+title:               Blog
+
+# Pagination
+paginate:            5
+paginate_path:       '/page-:num/'
+
+# Markdown enabled, however don't use more than one paragraph (enforced by `>`)
+description:         >
+  Musings of a software engineer with triathlon tendencies
+
+# The tags listed as entries in the sidebar
+sidebar_tags:        [tech, triathlon]
+
+# Fallback image and color if not overwritten for tag or post
+image:               /blog/public/img/sidebar.jpg
+color:               '#A85641'
+
+# Fonts
+font:                '"PT Serif", Georgia, serif'
+font_accent:         '"Roboto Slab", "PT Serif", Georgia, serif'
+load_google_fonts:   'Roboto+Slab:700|PT+Serif:400,400italic,700,700italic'
+
+# About yourself
+author:
+  name:              'Christopher Poenaru'
+
+  # This photo will be used in the about section
+  photo:             https://gravatar.com/avatar/4c4147ddb8938bb1e486159918d2485d?s=100
+  photo2x:           https://gravatar.com/avatar/4c4147ddb8938bb1e486159918d2485d?s=200
+
+  # Markdown enabled, can use multiple paragraphs (enabled by `|`)
+  about:
+
+  # Social media icons in sidebar
+  # Comment/uncommet to show/hide
+  # Icons appear in order, can be rearranged:
+  social:
+    facebook:        cpoenaru
+    strava:          1271201
+    # google:          _number_
+    # vimeo:           _username_
+    # vine:            _username_
+    # spotify:         user/_number_
+    # soundcloud:      _username_
+    # lastfm:          _username_
+    instagram:       kiambogo
+    # flickr:          _string_@_string_
+    # 500px:           _username_
+    # dribbble:        _username_
+    # behance:         _username_
+    # deviantart:      _username_
+    # ello:            _username_
+    # twitch:          _username_
+    # steam:           _number_
+    # reddit:          _username_
+    # tumblr:          _username_
+    # pinterest:       _username_
+    # foursquare:      _number_
+    # yelp:            _string_
+    github:          kiambogo
+    # stackoverflow:   _number_/_username_
+    # npm:             _username_
+    # hackernews:      _username_
+    # trello:          _firstname__lastname_
+    linkedin:         chrispoenaru
+    # xing:            _firstname___lastname__counter_
+    # blogger:         _number_
+    # delicious:       _username_
+    # stumbleupon:     _username_
+    # paypal:          _username_
+
+# Remove to disable Google Anaylics
+google_analytics_id: 'UA-48747023-1'
+
+# Setting a disqus subdomain will enable the comment section
+disqus:              christopherpoenaru
+
+kramdown:
+  math_engine:       mathjax
+  math_engine_opts:
+    preview:         true
+    preview_as_code: true
+
+compress_html:
+  comments:          ["<!-- ", " -->"]
+  clippings:         all
+  endings:           all
+  ignore:
+    envs:            [local]
+
+sass:
+  style:             compressed
