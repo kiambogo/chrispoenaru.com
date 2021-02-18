@@ -1,13 +1,13 @@
 +++
 title = "Deploying to Maven Central Repository with SBT"
 description = "Deploying to Maven Central Repository with SBT"
-date = 2017-01-22T21:06:08+08:00
+date = 2017-01-22
 draft = false
 template = "page.html"
 
 [taxonomies]
-categories =  []
-tags = []
+categories =  ["Deploying"]
+tags = ["scala", "sbt", "maven"]
 +++
 
 As an open source project begins to grow its userbase, accessibility and ease-of-use become paramount. This was something that I experienced personally with <a href="https://github.com/kiambogo/scrava">Scrava</a>; when a user opened an issue stating that he was unable to find Scrava on Maven, and didn't know how to include this library in his project. While explaining how to compile from source, it was a friendly reminder that I too once relied on libs being available in a

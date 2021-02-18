@@ -1,45 +1,47 @@
 base_url = "https://www.chrispoenaru.com"
-title = "SDLfksadjf"
+
+title = "⚡ kiambogo"
+description = "wangbo’s home & blog"
 default_language = "en"
 
-compile_sass = true
-build_search_index = true
 theme = "zerm"
-highlight_theme = "gruvbox-dark"
-
-[markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
-
-[extra]
-# Put all your custom variables here
-highlight_theme = "axar"
-author = "Christopher Poenaru"
-show_author = false
-show_tags = true
-show_categories = true
-theme_color = "green"
-
-main_menu = [
-          {url="/about/", name="about"},
-          {url="/blog/", name="blog"},
-]
-
-taxonomies = [
-           {name = "tags"},
-           {name = "categories"},
-]
 
 generate_rss = false
+compile_sass = true
 
-menu_more = "show more"
+highlight_theme = "gruvbox-dark"
 
-# Displayed after teaser text for a blog post.
-read_more = "read more"
+taxonomies = [
+    {name = "tags"},
+    {name = "categories"},
+]
 
-# not currently used from previous theme, but leaving here for now in case I
-# feel like adding it.
-read_other_posts = "read other posts"
+center = true
 
-copyright = "<span>© 2021 <a href=\"https://www.chrispoenaru.com\">Christopher Poenaru</a> :: <a href=\"https://github.com/kiambogo\">Github</a> :: ⚡ <a href=\"https://www.getzola.org/\">Zola</a></span>"
+[markdown]
+highlight_code = true
+highlight_theme = "gruvbox-dark"
+render_emoji = true
+
+[extra]
+author = "Christopher Poenaru"
+show_author = false
+show_categories = true
+show_tags = true
+theme_color = "green"
+full_width = true
+favicon = "favicon.ico"
+
+main_menu = [
+    {url="/about/", name="about"},
+    {url="/blog/", name="blog"},
+]
+
+logo_text = "kiambogo"
+logo_home_link = "/"
+generate_rss = false
+
+menu_more = "More ..."
+read_more = "Read"
+
+copyright = "<span>© 2021 <a href=\"http://chrispoenaru.com\">Christopher Poenaru</a> :: <a href=\"https://github.com/kiambogo\">Github</a> :: ⚡ <a href=\"https://www.getzola.org/\">Zola</a></span>"
