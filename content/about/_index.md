@@ -1,10 +1,14 @@
 +++
 title = "about"
 path = "about"
-
-[extra]
 +++
 
-# Christopher Poenaru
+# hello
 
-hello
+I'm Christopher Poenaru; computer engineer, cyclist, and rock climber. 
+This site serves as a centralized 
+
+keybase
+instagram
+linkedin
+strava
