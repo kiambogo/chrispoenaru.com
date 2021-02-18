@@ -1,7 +1,7 @@
-base_url = "https://www.chrispoenaru.com"
+base_url = "https://www.kiambogo.ca"
 
-title = "⚡ kiambogo"
-description = "wangbo’s home & blog"
+title = "kiambogo ⚡"
+description = "home and blog of Christopher Poenaru"
 default_language = "en"
 
 theme = "zerm"
@@ -24,7 +24,7 @@ highlight_theme = "gruvbox-dark"
 render_emoji = true
 
 [extra]
-author = "Christopher Poenaru"
+author = "kiambogo ⚡"
 show_author = false
 show_categories = true
 show_tags = true
