@@ -41,3 +41,5 @@ read_more = "read more"
 # not currently used from previous theme, but leaving here for now in case I
 # feel like adding it.
 read_other_posts = "read other posts"
+
+copyright = "<span>© 2021 <a href=\"https://www.chrispoenaru.com\">Christopher Poenaru</a> :: <a href=\"https://github.com/kiambogo\">Github</a> :: ⚡ <a href=\"https://www.getzola.org/\">Zola</a></span>"
