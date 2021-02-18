@@ -1,11 +1,11 @@
-# The URL the site will be built for
-base_url = "https://chrispoenaru.com"
+base_url = "https://www.chrispoenaru.com"
+title = "SDLfksadjf"
+default_language = "en"
 
-# Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
-
-# Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
+theme = "zerm"
+highlight_theme = "gruvbox-dark"
 
 [markdown]
 # Whether to do syntax highlighting
@@ -14,3 +14,30 @@ highlight_code = true
 
 [extra]
 # Put all your custom variables here
+highlight_theme = "axar"
+author = "Christopher Poenaru"
+show_author = false
+show_tags = true
+show_categories = true
+theme_color = "green"
+
+main_menu = [
+          {url="/about/", name="about"},
+          {url="/blog/", name="blog"},
+]
+
+taxonomies = [
+           {name = "tags"},
+           {name = "categories"},
+]
+
+generate_rss = false
+
+menu_more = "show more"
+
+# Displayed after teaser text for a blog post.
+read_more = "read more"
+
+# not currently used from previous theme, but leaving here for now in case I
+# feel like adding it.
+read_other_posts = "read other posts"
