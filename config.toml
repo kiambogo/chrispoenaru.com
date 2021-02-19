@@ -1,0 +1,46 @@
+base_url = "https://www.kiambogo.ca"
+
+title = "kiambogo ⚡"
+description = "home and blog of christopher poenaru"
+default_language = "en"
+
+theme = "zerm"
+
+generate_rss = false
+compile_sass = true
+
+taxonomies = [
+    {name = "tags"},
+    {name = "categories"},
+]
+
+center = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "gruvbox-dark"
+render_emoji = true
+
+[extra]
+author = "kiambogo ⚡"
+show_author = false
+show_categories = true
+show_tags = true
+theme_color = "green"
+full_width = true
+favicon = "favicon.ico"
+font_awesome = "5.15.2"
+
+main_menu = [
+    {url="/about/", name="about"},
+    {url="/blog/", name="blog"},
+    {url="/cv.pdf", name="cv"},
+]
+
+logo_text = "kiambogo"
+logo_home_link = "/"
+
+menu_more = "More ..."
+read_more = "Read"
+
+copyright = "<span>© 2021 <a href=\"http://kiambogo.com\">Christopher Poenaru</a> :: <a href=\"https://github.com/kiambogo\">Github</a> :: ⚡ <a href=\"https://www.getzola.org/\">Zola</a></span>"
