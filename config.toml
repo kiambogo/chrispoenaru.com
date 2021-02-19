@@ -31,7 +31,7 @@ show_tags = true
 theme_color = "green"
 full_width = true
 favicon = "favicon.ico"
-custom_css = true
+font_awesome = "5.15.2"
 
 main_menu = [
     {url="/about/", name="about"},
