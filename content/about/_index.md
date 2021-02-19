@@ -14,6 +14,6 @@ You can find me around the web:
 
 [<i class="fab fa-2x fa-keybase"></i>](https://keybase.io/kiambogo)
 [<i class="fab fa-2x fa-github"></i>](https://github.com/kiambogo)
-[<i class="fab fa-2x fa-instagram"></i>](https://instagram.com/kiambogo)
 [<i class="fab fa-2x fa-strava"></i>](https://www.strava.com/athletes/1271201)
+[<i class="fab fa-2x fa-instagram"></i>](https://instagram.com/kiambogo)
 [<i class="fab fa-2x fa-linkedin"></i>](https://www.linkedin.com/in/chrispoenaru/)

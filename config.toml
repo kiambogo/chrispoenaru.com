@@ -9,8 +9,6 @@ theme = "zerm"
 generate_rss = false
 compile_sass = true
 
-highlight_theme = "gruvbox-dark"
-
 taxonomies = [
     {name = "tags"},
     {name = "categories"},
@@ -41,9 +39,8 @@ main_menu = [
 
 logo_text = "kiambogo"
 logo_home_link = "/"
-generate_rss = false
 
 menu_more = "More ..."
 read_more = "Read"
 
-copyright = "<span>© 2021 <a href=\"http://chrispoenaru.com\">Christopher Poenaru</a> :: <a href=\"https://github.com/kiambogo\">Github</a> :: ⚡ <a href=\"https://www.getzola.org/\">Zola</a></span>"
+copyright = "<span>© 2021 <a href=\"http://kiambogo.com\">Christopher Poenaru</a> :: <a href=\"https://github.com/kiambogo\">Github</a> :: ⚡ <a href=\"https://www.getzola.org/\">Zola</a></span>"
