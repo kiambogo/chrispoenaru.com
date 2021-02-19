@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Deploying to Maven Central Repository with SBT - kiambogo ⚡</title>
+    
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="home and blog of christopher poenaru"/>
+
+    <meta property="og:title" content="
+    kiambogo ⚡ -&nbsp;Deploying to Maven Central Repository with SBT" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;blog&#x2F;deploying-maven-central-sbt&#x2F;"/>
+    <meta property="og:description" content="Deploying to Maven Central Repository with SBT"/>
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;style.css">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;color&#x2F;green.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    
+<link rel="shortcut icon" href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;favicon.ico" type="image/x-icon" /></head>
+    <body>
+        <div class="container full">
+<header class="header">
+    <div class="header__inner">
+        <div class="header__logo">
+            <a href="&#x2F;">
+    <div class="logo">
+        kiambogo
+    </div>
+</a>
+        </div>
+        <div class="menu-trigger">menu</div>
+    </div>
+    
+    <nav class="menu">
+        <ul class="menu__inner menu__inner--desktop">
+            
+            
+        <li>
+            <a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;about">about</a>
+        </li>
+        <li>
+            <a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;blog">blog</a>
+        </li>
+        <li>
+            <a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;cv.pdf">cv</a>
+        </li></ul>
+
+        <ul class="menu__inner menu__inner--mobile">
+            
+        <li>
+            <a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;about">about</a>
+        </li>
+        <li>
+            <a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;blog">blog</a>
+        </li>
+        <li>
+            <a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;cv.pdf">cv</a>
+        </li>
+        </ul>
+    </nav>
+
+    </header>
+<div class="content"><div class="post">
+        <h1 class="post-title">
+            <a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;blog&#x2F;deploying-maven-central-sbt&#x2F;">Deploying to Maven Central Repository with SBT</a>
+        </h1>
+        
+    <div class="post-meta">
+        <span class="post-date">2017.01.22
+                </span>
+
+        <span class="post-author"></span>
+
+        
+
+    
+    :: {<a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;categories&#x2F;deploying&#x2F;">Deploying</a>} 
+
+            
+    ::
+    #<a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;tags&#x2F;scala&#x2F;">scala</a>
+        
+    #<a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;tags&#x2F;sbt&#x2F;">sbt</a>
+        
+    #<a href="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;tags&#x2F;maven&#x2F;">maven</a>
+        
+    
+            
+        
+    </div>
+
+
+
+        
+
+        <div class="post-content">
+            <p>As an open source project begins to grow its userbase, accessibility and ease-of-use become paramount. This was something that I experienced personally with <a href="https://github.com/kiambogo/scrava">Scrava</a>; when a user opened an issue stating that he was unable to find Scrava on Maven, and didn't know how to include this library in his project. While explaining how to compile from source, it was a friendly reminder that I too once relied on libs being available in a
+repository instead of compiling from source, and as such decided to learn how to deploy Scrava to Maven Central.</p>
+<p>While there is exhaustive documentation online about how to deploy to Maven, I like to think of this as documenting the simplified, concise steps I took for deploying a Scala project to the Maven Central repository.</p>
+<blockquote>
+<p>Prerequisites:
+You have an SBT project that successfully compiles.</p>
+</blockquote>
+<h3 id="step-1-open-a-ticket-with-ossrh"><a class="zola-anchor" href="#step-1-open-a-ticket-with-ossrh" aria-label="Anchor link for: step-1-open-a-ticket-with-ossrh">§</a>
+Step 1 - Open a ticket with OSSRH</h3>
+<p>You will need to create a Jira ticket with OSSRH. This will trigger the creation of the repositories for you to deploy to.</p>
+<p>If you don't have an existing account, you can create one <a href="https://issues.sonatype.org/secure/Signup!default.jspa">here</a>.</p>
+<p>With your account you can file your ticket <a href="https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134">here</a>.</p>
+<p>The form should be straight forward - requesting information about your project (URL, Github link, etc). The staging repository should be ready for you within 2 days according to the Sonatype guide - from my experience though, it was less than 15 minutes before the bot processed my ticket.</p>
+<h3 id="step-2-generate-pgp-keys"><a class="zola-anchor" href="#step-2-generate-pgp-keys" aria-label="Anchor link for: step-2-generate-pgp-keys">§</a>
+Step 2 - Generate PGP Keys</h3>
+<p>While you are waiting for the staging repository to be created, you can prepare your PGP keys with which you will be signing your deploys.</p>
+<blockquote>
+<p>Note: Signing your deploy is a means of ensuring whoever uses it that they are using the package that you deployed - it hasn't been maliciously modified or replaced after leaving your computer.</p>
+</blockquote>
+<p>There is a useful SBT plugin called <a href="https://github.com/sbt/sbt-pgp">sbt-pgp</a> which provides PGP signing for SBT packages. To install, add the following to <code>~/.sbt/0.13/plugins/gpg.sbt</code></p>
+<pre style="background-color:#282828;">
+<code>addSbtPlugin(&quot;com.jsuereth&quot; % &quot;sbt-pgp&quot; % &quot;1.0.0&quot;)
+</code></pre>
+<p>While this plugin supports generating PGP keys, I prefer to use the <code>gpg</code> command-line tool built-in to Mac OS and Linux.</p>
+<pre style="background-color:#282828;">
+<code>gpg --gen-key
+</code></pre>
+<p>The default options should work just fine. Now you should have public and private keys in your keyring with which you can sign your deploys. By default, sbt-pgp will automatically pick up these keys (assuming that you didn't change the path when running the last command), and that you don't have previous keys in your keyring (if you haven't run <code>gpg --gen-key</code> before, then you're fine).</p>
+<p>Finally, we will need to upload our keys to the keyserver pool. First grab the hex hash of your key, and then upload it:</p>
+<pre style="background-color:#282828;">
+<code>gpg --list-keys
+gpg --keyserver hkp://pool.sks-keyservers.net --send-keys &lt;your_key_hex&gt;
+</code></pre>
+<p>You'll want to pass it the hash of your public key.
+<img src="/blog/img/2017-01-22-02.png" alt="300x50" /></p>
+<h3 id="step-3-modify-sbt-build-file"><a class="zola-anchor" href="#step-3-modify-sbt-build-file" aria-label="Anchor link for: step-3-modify-sbt-build-file">§</a>
+Step 3 - Modify SBT Build File</h3>
+<p>Now we need to modify our SBT project so that we can automatically deploy to Maven.</p>
+<p>The first step is to add your Sonatype credentials to your SBT configuration so that you're authenticated when you try to deploy. Create and add to <code>~/.sbt/0.13/sonatype.sbt</code>, replacing username and password as necessary:</p>
+<pre style="background-color:#282828;">
+<code>credentials += Credentials(
+  &quot;Sonatype Nexus Repository Manager&quot;,
+  &quot;oss.sonatype.org&quot;,
+  &quot;&lt;username&gt;&quot;,
+  &quot;&lt;password&gt;&quot;)
+</code></pre>
+<p>Next we will add some settings to our build file (<code>build.sbt</code> or <code>Build.scala</code>):</p>
+<pre style="background-color:#282828;">
+<code>publishMavenStyle := true
+
+publishArtifact in Test := false
+
+pomIncludeRepository := { _ =&gt; false }
+
+publishTo := {
+  val nexus = &quot;https://oss.sonatype.org/&quot;
+  if (isSnapshot.value)
+    Some(&quot;snapshots&quot; at nexus + &quot;content/repositories/snapshots&quot;)
+  else
+    Some(&quot;releases&quot;  at nexus + &quot;service/local/staging/deploy/maven2&quot;)
+}
+
+pomExtra :=
+  &lt;url&gt;[project_url]&lt;/url&gt;
+  &lt;licenses&gt;
+    &lt;license&gt;
+      &lt;name&gt;MIT&lt;/name&gt;
+      &lt;url&gt;http://www.opensource.org/licenses/mit-license.php&lt;/url&gt;
+      &lt;distribution&gt;repo&lt;/distribution&gt;
+    &lt;/license&gt;
+  &lt;/licenses&gt;
+  &lt;scm&gt;
+    &lt;url&gt;git@github.com:[username]/[repo].git&lt;/url&gt;
+    &lt;connection&gt;scm:git:git@github.com:[username]/[repo].git&lt;/connection&gt;
+  &lt;/scm&gt;
+  &lt;developers&gt;
+    &lt;developer&gt;
+      &lt;id&gt;[username]&lt;/id&gt;
+      &lt;name&gt;[your_name]&lt;/name&gt;
+      &lt;url&gt;[your_website]&lt;/url&gt;
+    &lt;/developer&gt;
+  &lt;/developers&gt;
+</code></pre>
+<p>You will need to fill in your details in the <code>pomExtra</code> section. As this information gets bundled into a POM file in your deploy and validated upon upload, it will need to be accurate.</p>
+<h3 id="step-4-deploy-to-staging"><a class="zola-anchor" href="#step-4-deploy-to-staging" aria-label="Anchor link for: step-4-deploy-to-staging">§</a>
+Step 4 - Deploy to Staging</h3>
+<p>At this point, you are ready to deploy your package to Maven staging.</p>
+<pre style="background-color:#282828;">
+<code>sbt publishSigned
+</code></pre>
+<p>If you provided a passphrase on your PGP key, you will be prompted for it now. Assuming that you didn't encounter any issues up until now, it should be deployed successfully.</p>
+<h3 id="step-5-close-and-release-to-central"><a class="zola-anchor" href="#step-5-close-and-release-to-central" aria-label="Anchor link for: step-5-close-and-release-to-central">§</a>
+Step 5 - Close and Release to Central</h3>
+<p>Head over to <a href="https://oss.sonatype.org/">https://oss.sonatype.org/</a>, log in, and click on 'Staging Repositories' in the left nav. In the list search for your group ID (it may be all concatenated together). In this case, mine was <code>comgithubkiambogo-1002</code>. Select this bundle and at the top menu select 'Close'. At this point, all your configuration settings for the POM file will be validated. In the 'Activity' tab, you will be able to see the results of these validations. If all
+goes well, the bundle will now be closed and ready for release. Click 'Release' in the menu nav at the top.</p>
+<p>Finally, you should comment on the Jira ticket that you created back in the first step to indicate that you have completed your first release. This is only needed to be done once, and will kick off the process of synchronizing Maven Central and the staging environment for your repo.</p>
+<p>Finished! It will take a few hours for your package to show up in <a href="https://search.maven.org/">search</a>. Users will now be able to pull your project with the built-in resolver.</p>
+
+        </div>
+        
+    
+</div></div>
+            
+    <div class="pagination">
+        <div class="pagination__buttons">
+            </div>
+    </div>
+<footer class="footer">
+                    <div class="footer__inner"><div class="copyright copyright--user"><span>© 2021 <a href="http://kiambogo.com">Christopher Poenaru</a> :: <a href="https://github.com/kiambogo">Github</a> :: ⚡ <a href="https://www.getzola.org/">Zola</a></span></div>
+    <script type="text/javascript" src="https:&#x2F;&#x2F;www.kiambogo.ca&#x2F;assets&#x2F;js&#x2F;main.js"></script>
+</div>
+                    
+
+                </footer></div>
+    </body>
+</html>
