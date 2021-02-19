@@ -36,6 +36,7 @@ custom_css = true
 main_menu = [
     {url="/about/", name="about"},
     {url="/blog/", name="blog"},
+    {url="/cv.pdf", name="cv"},
 ]
 
 logo_text = "kiambogo"
