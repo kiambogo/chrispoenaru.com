@@ -1,7 +1,7 @@
 base_url = "https://www.kiambogo.ca"
 
 title = "kiambogo ⚡"
-description = "home and blog of Christopher Poenaru"
+description = "home and blog of christopher poenaru"
 default_language = "en"
 
 theme = "zerm"
