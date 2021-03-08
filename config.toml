@@ -34,7 +34,7 @@ font_awesome = "5.15.2"
 main_menu = [
     {url="/about/", name="about"},
     {url="/blog/", name="blog"},
-    {url="/cv.pdf", name="cv"},
+    {url="https://raw.githubusercontent.com/kiambogo/cv/main/2021/cv.pdf", name="cv"},
 ]
 
 logo_text = "kiambogo"
