@@ -1,8 +1,8 @@
 +++
-title = "Constructing a CV class in LaTex"
-description = "Constructing a CV class in LaTex"
+title = "Intro to LaTeX: Constructing a CV class"
+description = "Intro to LaTeX: Constructing a CV class"
 date = 2021-02-22
-draft = true
+draft = false
 template = "page.html"
 
 [taxonomies]
@@ -10,7 +10,39 @@ categories =  ["Tutorials"]
 tags = ["latex"]
 +++
 
-to start out, lets begin with an article. lets make the cv first, then break it into a class for reuse
+View source code on Github <i class="fab fa-1x fa-github"></i>: [soft-cv](https://github.com/kiambogo/soft-cv)
+
+# Background
+
+For the past several years, I have typeset my resume with LaTeX, leveraging various open source templates to aid me. While this served me well enough, it never sat well with me that I didn't have a good understanding of how this template was constructed. With some time off between jobs and needing to update my resume with my recent experience, I decided it was time to roll my own template as a means of furthering my knowledge of LaTeX.
+
+# Intro
+
+*Disclaimer: LaTeX is a sophisticated typesetting engine, capabable of working with many different document types (books, articles, research papers, presentations, etc). This post describes one approach to setting up a CV, with the aim of acting as a beginner tutorial to LaTeX. The info presented here may not be accurate for other document types or use-cases.*
+
+> In this post I'll be using `xelatex` to compile and render a PDF from a `.tex` file. If you want to follow along with the builds, ensure you have Tex live setup on your machine.
+
+In order to get started, we will need a `.tex` file. This file is the main file which will be the input into the typsetter (`xelatex`). Lets create a new file and get started.
+
+```tex
+\documentclass{article}
+
+\begin{document}
+Hello, World!
+\end{document}
+```
+
+Let's save this and compile: `xelatex cv.tex`. You should have a generated PDF of the document, which will just be a simple white page with the all-to-familiar greeting printed in the default LaTeX font. 
+
+<img src="https://user-images.githubusercontent.com/4472397/110373020-dc0c8f80-8003-11eb-9d71-3cc6c753b7ad.png" height="400">
+
+
+
+
+
+
+
+to start out, lets begin with an article.e lets make the cv first, then break it into a class for reuse
 
 ```
 \documentclass{article}
