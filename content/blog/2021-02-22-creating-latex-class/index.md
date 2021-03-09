@@ -32,12 +32,113 @@ Hello, World!
 \end{document}
 ```
 
-Let's save this and compile: `xelatex cv.tex`. You should have a generated PDF of the document, which will just be a simple white page with the all-to-familiar greeting printed in the default LaTeX font. 
+Let's save this and compile: `xelatex cv.tex`. You should have a generated PDF of the document, which will just be a simple white page with the all-to-familiar greeting printed in the default LaTeX font.
 
-<img src="https://user-images.githubusercontent.com/4472397/110373020-dc0c8f80-8003-11eb-9d71-3cc6c753b7ad.png" height="400">
+<img src="hello_world.png" height="400">
+
+Now that we're set for compiling, lets start breaking out a class.
+
+# Class
+
+A class in LaTeX is a file which extends the default formatting of a tex document, adding or overriding commands and can provide an opinion about the layout of a document. In our example above, `article` was the class that we used as denoted by `\documentclass{article}`.
+
+In order to provide a custom layout and provide new commands for populating our CV with data, we will construct a new class. Let's start a new file, `cv.cls` and structuring our document.
+
+```tex
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{cv}[2021/03/03 CV]
+\LoadClass{article}
+
+\RequirePackage{geometry}
+
+\geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+```
+
+There is a bunch of boilerplate in here, so lets walk through what's going on.
+
+- `\NeedsTeXFormat{LaTeX2e}`: Describes the Tex format (version of LaTeX) that the class requires
+- `\ProvidesClass{cv}[2021/03/03 CV]`: Declares the name of the class. In this case, `cv`
+- `\LoadClass{article}`: Loads a base class to work off of (article, here)
+- `\RequirePackage{geometry}`: Includes a package with the class. Geometry is useful for page layout customization
+- `\geometry{...}`: Formats the page with the described margins
+- `\thispagestyle{empty}`: instructs the engine to drop page numbers
+- `\setlength{\parindent}{0pt}`: instructs the engine to _not_ indent the page (since we already described margins above)
+
+Now that we have a very basic class defined, we can start to use it in our tex document.
+
+```tex
+\documentclass{cv}
+
+\begin{document}
+Hello, World!
+\end{document}
+```
+
+Now that we have a custom class setup and our tex document is leveraging that, we can start defining some commands to get the layout how we'd like it.
+
+# Commands
+
+I want to keep the class as easy to use as possible. Ideally, I'd like for someone who has little to no experience with LaTeX to be able to use this class without having to dig into the internals.
+
+For this reason, I've setup several commands in `cv.cls` for declaring the content of each section.
+
+```tex
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{cv}[2021/03/03 CV]
+\LoadClass{article}
 
 
+\RequirePackage{xcolor}
 
+...
+
+\def\cvThemeColor{blue}
+\newcommand*{\themeColor}[1]{\def\cvThemeColor{#1}}
+\newcommand*{\name}[1]{\def\cvName{#1}}
+\newcommand*{\tagline}[1]{\def\cvTagline{#1}}
+\newcommand*{\email}[1]{\def\cvEmail{#1}}
+\newcommand*{\web}[1]{\def\cvWeb{#1}}
+\newcommand*{\linkedin}[1]{\def\cvLinkedin{#1}}
+\newcommand*{\github}[1]{\def\cvGithub{#1}}
+\newcommand*{\skills}[1]{\def\cvSkills{#1\vspace{8pt}}}
+\newcommand*{\projects}[1]{\def\cvProjects{#1}}
+\newcommand*{\contact}[1]{\def\cvContact{#1}}
+\newcommand{\about}[1]{\def\cvAbout{#1\vspace{8pt}\\}}
+\newcommand*{\experience}[1]{\def\cvExperience{#1}}
+\newcommand*{\education}[1]{\def\cvEducation{#1}}
+```
+
+Here, we are defining many new commands which all have a very basic function: take the argument of each command and store it in a respective variable. With these commands in place, one can define each section with a simple command and not have to worry about ordering, layout, etc.
+
+With these commands in place, lets go ahead and setup the basic structure of our CV in `cv.cls`.
+
+```tex
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{cv}[2021/03/03 CV]
+\LoadClass{article}
+
+\RequirePackage{xcolor}
+\RequirePackage{geometry}
+\RequirePackage{ragged2e}
+
+...
+
+\def\cvThemeColor{blue}
+\newcommand*{\themeColor}[1]{\def\cvThemeColor{#1}}
+\newcommand*{\name}[1]{\def\cvName{#1}}
+
+...
+
+\begin{minipage}[t]{\linewidth}
+  \RaggedLeft{
+    \headerNameStyle{\cvName}\\
+    \taglineStyle{\cvTagline}
+  }
+\end{minipage}
+\vspace{20pt}
+```
 
 
 
